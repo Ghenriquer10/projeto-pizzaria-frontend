@@ -1,8 +1,42 @@
-.container{
-  color: red;
+.containerCenter{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--dark-700);
+}
 
-  h1{
-    font-size: 2.9em;
-    color: blue;
+.login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 600px;
+  margin-top: 2rem;
+  padding: 1.5rem 1.5rem;
+  
+  form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+  }
+  form button{
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+.register{
+  margin-top: 1rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+@media (max-width: 620px){
+  .login{
+    width: 90%;
   }
 }

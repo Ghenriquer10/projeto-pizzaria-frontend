@@ -33,6 +33,7 @@ export default function Home() {
               Acessar
             </Button>
           </form>
+          <a className={style.register}>Não possui uma conta? Cadastre-se</a>
         </div>
       </div>
     </>

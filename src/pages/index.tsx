@@ -1,4 +1,8 @@
-import Head from "next/head"
+import Head from "next/head";
+import Image from "next/image";
+import style from '../../styles/home.module.scss';
+import logoImg from '../../public/logo.svg';
+import { Input } from '../components//ui/Input'
 
 export default function Home() {
   return (
@@ -6,8 +10,20 @@ export default function Home() {
       <Head>
         <title>Sujeito Pizzaria - Login</title>
       </Head>
-      <div>
-        <h1>Sujeito Pizzaria</h1>
+      <div className={style.containerCenter}>
+        <Image src={logoImg} alt="Imagem sujeito pizzaria" />
+        <div className={style.login}>
+          <form>
+            <Input
+              placeholder="Digite seu e-maiil"
+              type={"text"}
+            />
+            <Input
+              placeholder="Digite sua senha"
+              type={"password"}
+            />
+          </form>
+        </div>
       </div>
     </>
   )

@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div >
+    <div>
       <h1>Instalando typescript :D</h1>
     </div>
   )

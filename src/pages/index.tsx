@@ -1,7 +1,14 @@
+import Head from "next/head"
+
 export default function Home() {
   return (
-    <div>
-      <h1>Instalando typescript :D</h1>
-    </div>
+    <>
+      <Head>
+        <title>Sujeito Pizzaria - Login</title>
+      </Head>
+      <div>
+        <h1>Sujeito Pizzaria</h1>
+      </div>
+    </>
   )
 }

@@ -4,6 +4,7 @@ import style from '../../styles/home.module.scss';
 import logoImg from '../../public/logo.svg';
 import { Input } from '../components//ui/Input'
 import { Button } from "../components/ui/Button";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -33,7 +34,9 @@ export default function Home() {
               Acessar
             </Button>
           </form>
-          <a className={style.register}>Não possui uma conta? Cadastre-se</a>
+          <Link href={"/signup"}>
+            <a className={style.register}>Não possui uma conta? Cadastre-se</a>
+          </Link>
         </div>
       </div>
     </>

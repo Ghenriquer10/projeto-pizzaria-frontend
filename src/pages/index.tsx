@@ -19,6 +19,12 @@ export default function Home() {
 
   async function handleLogin(event: FormEvent) {
     event.preventDefault()
+
+    if (email === "" && password === "") {
+      alert("Preencha os campos corretamente!")
+      return
+    }
+
     let data = {
       email,
       password

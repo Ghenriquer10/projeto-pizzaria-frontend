@@ -47,7 +47,7 @@ export function AuthProvider({ children }: AuthProviderPros) {
                 email,
                 password
             })
-            //console.log(response.data)
+
 
             const { name, id, token } = response.data
 
@@ -67,7 +67,6 @@ export function AuthProvider({ children }: AuthProviderPros) {
 
             // Redirecionar usuário para os últimos pedidos
             Router.push('dashboard')
-
 
         } catch (err) {
             console.log("Erro ao acessar", err)

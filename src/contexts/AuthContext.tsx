@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 import { destroyCookie, setCookie, parseCookies } from 'nookies';
 import Router from 'next/router'
 import { api } from '../services/apiClient'
@@ -48,6 +48,30 @@ export function AuthProvider({ children }: AuthProviderPros) {
 
     const [user, setUser] = useState<UserProps>()
     const isAuthenticated = !!user;
+
+    // Atrvés do useEffect é persistido os dados do usuário, e caso o usuário tenha manipulado seu cookies, o mesmo é deslogado
+    // da aplicação
+
+    useEffect(() => {
+        //Pegando cookie do usuário
+
+        const { '@nextauth.token': token } = parseCookies();
+
+        if (token) {
+            api.get('/userinfo').then(response => {
+                const { id, name, email } = response.data;
+                setUser({
+                    id,
+                    name,
+                    email
+                })
+            })
+                .catch(() => {
+                    signOut();
+                })
+        }
+
+    }, [])
 
     async function signIn({ email, password }: SingInProps) {
         try {

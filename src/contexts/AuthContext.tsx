@@ -28,10 +28,14 @@ type SingUpProps = {
     email: string,
     password: string
 }
+type AddCategoryProps = {
+    category: string
+}
 
 type AuthProviderPros = {
     children: ReactNode;
 }
+
 
 export const AuthContext = createContext({} as AuthContextData)
 
@@ -111,7 +115,7 @@ export function AuthProvider({ children }: AuthProviderPros) {
     async function signUp({ name, email, password }: SingUpProps) {
         try {
 
-            const response = await api.post('users', {
+            const response = await api.post('/users', {
                 name,
                 email,
                 password

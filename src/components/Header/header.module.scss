@@ -11,6 +11,11 @@
     max-width: 1120px; 
     margin: 0 auto;
 
+    @media (min-width: 320px) and (max-width: 720px) {
+        flex-direction: column;
+    }
+
+
     img{
         cursor: pointer;
     }
@@ -22,6 +27,10 @@
     justify-content: center;
     width: 30%;
     justify-content: space-around;
+
+    @media (min-width: 320px) and (max-width: 720px) {
+        width: 100%;
+    }
 
     button{
         background: transparent;

@@ -1,11 +1,18 @@
 import { canSSRAuth } from '../../utils/canSSRAuth';
+import Head from 'next/head';
 import style from './dashboard.module.scss';
+import { Header } from '../../components/Header';
 
 export default function Dashboard() {
     return (
-        <div className={style.container}>
-            <h1 className={style.h1}>Dashboard</h1>
-        </div>
+        <>
+            <Head>
+                <title>Painel - Pizzaria</title>
+            </Head>
+            <div>
+                <Header />
+            </div>
+        </>
     )
 }
 

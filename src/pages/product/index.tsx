@@ -5,6 +5,7 @@ import { canSSRAuth } from "../../utils/canSSRAuth";
 import styles from './product.module.scss'
 import { FiUpload } from 'react-icons/fi'
 import { setupApiClient } from '../../services/api';
+import { toast } from 'react-toastify';
 
 type ItemProps = {
     id: string,
@@ -18,10 +19,15 @@ interface CategoryProps {
 export default function Product({ categoryList }: CategoryProps) {
 
     console.log(categoryList)
+    const [name, setName] = useState('');
+    const [price, setPrice] = useState('')
+    const [description, setDescription] = useState('')
 
+    // Tratando o envio de imagens
     const [avatarUrl, setAvatarUrl] = useState('');
     const [imageAvatar, setImageAvatar] = useState(null)
 
+    // Tratando a seleção de uma categoria
     const [categories, setCategories] = useState(categoryList || [])
     const [categorySelected, setCategorySelected] = useState(0)
 
@@ -49,7 +55,36 @@ export default function Product({ categoryList }: CategoryProps) {
 
     async function handleProduct(event: FormEvent) {
         event.preventDefault()
-        alert('clicou')
+        try {
+            const data = new FormData();
+
+            if (name === '' || price === '' || description === '' || imageAvatar === null) {
+                toast.warning('Preencha todos os campos!')
+                return;
+            }
+
+            data.append('name', name);
+            data.append('price', price);
+            data.append('description', description);
+            data.append('file', imageAvatar);
+            data.append('category_id', categories[categorySelected].id);
+
+            const apiClient = setupApiClient();
+
+            await apiClient.post('/product', data)
+            toast.success('Produto cadastrado com sucesso!')
+
+
+        } catch (err) {
+            console.log(err)
+            toast.error('Erro ao cadastrar produto!')
+        }
+
+        setName('');
+        setPrice('');
+        setDescription('');
+        setImageAvatar(null);
+        setAvatarUrl('');
     }
 
     return (
@@ -88,9 +123,21 @@ export default function Product({ categoryList }: CategoryProps) {
                                 )
                             })}
                         </select>
-                        <input placeholder='Nome do item' />
-                        <input placeholder='Valor' />
-                        <input placeholder='Descrição' />
+                        <input
+                            placeholder='Nome do item'
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                        />
+                        <input
+                            placeholder='Valor'
+                            value={price}
+                            onChange={e => setPrice(e.target.value)}
+                        />
+                        <input
+                            placeholder='Descrição'
+                            value={description}
+                            onChange={e => setDescription(e.target.value)}
+                        />
                         <button className={styles.button} type='submit'>Cadastrar</button>
                     </form>
 
@@ -105,7 +152,6 @@ export const getServerSideProps = canSSRAuth(async (ctx) => {
 
     const response = await apiClient.get('/category')
 
-    console.log(response.data)
     return {
         props: {
             categoryList: response.data

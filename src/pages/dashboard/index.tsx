@@ -1,10 +1,33 @@
+import { useState } from 'react';
 import { canSSRAuth } from '../../utils/canSSRAuth';
 import Head from 'next/head';
 import style from './dashboard.module.scss';
 import { Header } from '../../components/Header';
 import { FiRefreshCcw } from 'react-icons/fi'
+import { setupApiClient } from '../../services/api';
 
-export default function Dashboard() {
+type OrderItem = {
+    id: string;
+    table: string | number;
+    status: boolean;
+    draft: boolean;
+    name: string | number
+}
+
+interface HomeProps {
+    orders: OrderItem[]
+}
+
+
+
+export default function Dashboard({ orders }: HomeProps) {
+
+    const [orderList, setOrderList] = useState(orders || [])
+
+    function handleDetailsTable(id: string) {
+        alert('Id clicado:' + id)
+    }
+
     return (
         <>
             <Head>
@@ -18,18 +41,17 @@ export default function Dashboard() {
                         <button><FiRefreshCcw size={25} color="#3fffa3" /></button>
                     </div>
                     <article className={style.listOrders}>
-                        <section className={style.listItem}>
-                            <button>
-                                <div className={style.tag}></div>
-                                <span>Mesa 50</span>
-                            </button>
-                        </section>
-                        <section className={style.listItem}>
-                            <button>
-                                <div className={style.tag}></div>
-                                <span>Mesa 40</span>
-                            </button>
-                        </section>
+
+                        {orderList.map((item) => {
+                            return (
+                                <section key={item.id} className={style.listItem}>
+                                    <button onClick={() => handleDetailsTable(item.id)}>
+                                        <div className={style.tag}></div>
+                                        <span>Mesa: {item.table}</span>
+                                    </button>
+                                </section>
+                            )
+                        })}
                     </article>
                 </main>
             </div>
@@ -38,7 +60,14 @@ export default function Dashboard() {
 }
 
 export const getServerSideProps = canSSRAuth(async (ctx) => {
+
+    const apiClient = setupApiClient(ctx)
+
+    const response = await apiClient.get('/orders')
+
     return {
-        props: {}
+        props: {
+            orders: response.data
+        }
     }
 })

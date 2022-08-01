@@ -7,9 +7,10 @@ interface ModalOrderProps {
     isOpen: boolean;
     onRequestClose: () => void;
     order: OrderItemProps[];
+    handleFinishOrder: (id: string) => void
 }
 
-export function ModalOrder({ isOpen, onRequestClose, order }: ModalOrderProps) {
+export function ModalOrder({ isOpen, onRequestClose, order, handleFinishOrder }: ModalOrderProps) {
 
     const customStyle = {
         content: {
@@ -40,18 +41,22 @@ export function ModalOrder({ isOpen, onRequestClose, order }: ModalOrderProps) {
 
                 <div className={style.container}>
                     <h2>Detalhes do pedido</h2>
-                    <span>
+                    <span className={style.table}>
                         Mesa: <strong>{order[0].order.table}</strong>
                     </span>
 
                     {order.map((item) => {
                         return (
                             <section key={item.id} className={style.containerItem}>
-                                <span>{item.amount} - <strong>{item.product.name}</strong></span>
+                                <span>{item.amount} -<strong>{item.product.name}</strong></span>
                                 <span className={style.description}>{item.product.description}</span>
                             </section>
                         )
                     })}
+
+                    <button className={style.buttonOrder} onClick={() => handleFinishOrder(order[0].order_id)}>
+                        Concluir pedido
+                    </button>
                 </div>
             </button>
 

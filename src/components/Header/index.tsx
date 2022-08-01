@@ -13,6 +13,10 @@ export function Header() {
                     <img src='logo.svg' width={190} height={60} />
                 </Link>
                 <nav className={styles.navContent}>
+                    <Link href="/">
+                        <a>Pedidos</a>
+                    </Link>
+
                     <Link href="/category">
                         <a>Categoria</a>
                     </Link>
@@ -20,6 +24,7 @@ export function Header() {
                     <Link href="/product">
                         <a>Novo produto</a>
                     </Link>
+
                     <button onClick={signOut}>
                         <FiLogOut size={24} />
                     </button>

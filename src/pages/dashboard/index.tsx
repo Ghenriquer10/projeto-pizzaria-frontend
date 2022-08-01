@@ -7,6 +7,7 @@ import { FiRefreshCcw } from 'react-icons/fi'
 import { setupApiClient } from '../../services/api';
 import Modal from 'react-modal';
 import { ModalOrder } from '../../components/ModalOrder';
+import { toast } from 'react-toastify';
 
 type OrderItem = {
     id: string;
@@ -54,6 +55,18 @@ export default function Dashboard({ orders }: HomeProps) {
         setModaVisible(prev => !prev)
     }
 
+    async function handleFinishOrder(id: string) {
+        const apiClient = setupApiClient();
+        await apiClient.put('/order/finish', {
+            order_id: id
+        })
+
+        const response = await apiClient.get('/orders')
+        setOrderList(response.data)
+        toast.success('Pedido finalizado com sucesso!')
+        setModaVisible(false)
+    }
+
     async function handleDetailsTable(id: string) {
 
         const setupClient = setupApiClient();
@@ -69,6 +82,13 @@ export default function Dashboard({ orders }: HomeProps) {
         setModaVisible(true)
     }
 
+    async function handleRefreshOrders() {
+        const apiClient = setupApiClient();
+        const response = await apiClient.get('/orders')
+
+        setOrderList((await response).data)
+    }
+
     Modal.setAppElement('#__next');
 
     return (
@@ -81,9 +101,15 @@ export default function Dashboard({ orders }: HomeProps) {
                 <main className={style.container}>
                     <div className={style.containerHeader}>
                         <p>Últimos pedidos</p>
-                        <button><FiRefreshCcw size={25} color="#3fffa3" /></button>
+                        <button><FiRefreshCcw onClick={handleRefreshOrders} size={25} color="#3fffa3" /></button>
                     </div>
                     <article className={style.listOrders}>
+
+                        {orderList.length === 0 && (
+                            <span className={style.emptyList}>
+                                Nenhum pedido aberto foi encontrado!
+                            </span>
+                        )}
 
                         {orderList.map((item) => {
                             return (
@@ -101,7 +127,9 @@ export default function Dashboard({ orders }: HomeProps) {
                     <ModalOrder
                         isOpen={modalVisible}
                         onRequestClose={handleModal}
-                        order={modalItem} />
+                        order={modalItem}
+                        handleFinishOrder={handleFinishOrder}
+                    />
                 )}
             </div>
         </>

@@ -18,7 +18,7 @@ export function Header() {
                     </Link>
 
                     <Link href="/product">
-                        <a>Cardapio</a>
+                        <a>Novo produto</a>
                     </Link>
                     <button onClick={signOut}>
                         <FiLogOut size={24} />

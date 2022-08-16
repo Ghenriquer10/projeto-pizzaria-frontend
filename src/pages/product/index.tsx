@@ -6,6 +6,7 @@ import styles from './product.module.scss'
 import { FiUpload } from 'react-icons/fi'
 import { setupApiClient } from '../../services/api';
 import { toast } from 'react-toastify';
+import Image from 'next/image';
 
 type ItemProps = {
     id: string,
@@ -105,7 +106,7 @@ export default function Product({ categoryList }: CategoryProps) {
                             </span>
                             <input type={'file'} accept="image/png, image/jpeg" onChange={handleFile} />
                             {avatarUrl && (
-                                <img
+                                <Image
                                     className={styles.preview}
                                     src={avatarUrl}
                                     alt='Foto do produto'

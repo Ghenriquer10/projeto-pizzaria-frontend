@@ -37,14 +37,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5869);
 /* harmony import */ var _utils_canSSRAuth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(4130);
-/* harmony import */ var _product_module_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4402);
-/* harmony import */ var _product_module_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_product_module_scss__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _product_module_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(4402);
+/* harmony import */ var _product_module_scss__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_product_module_scss__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(2750);
 /* harmony import */ var react_icons_fi__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_icons_fi__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8469);
 /* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(3590);
+/* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(5675);
+/* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_image__WEBPACK_IMPORTED_MODULE_8__);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_components_Header__WEBPACK_IMPORTED_MODULE_3__, _services_api__WEBPACK_IMPORTED_MODULE_6__, react_toastify__WEBPACK_IMPORTED_MODULE_7__]);
 ([_components_Header__WEBPACK_IMPORTED_MODULE_3__, _services_api__WEBPACK_IMPORTED_MODULE_6__, react_toastify__WEBPACK_IMPORTED_MODULE_7__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
 
 
 
@@ -119,17 +122,17 @@ function Product({ categoryList  }) {
                 children: [
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_Header__WEBPACK_IMPORTED_MODULE_3__/* .Header */ .h, {}),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("main", {
-                        className: (_product_module_scss__WEBPACK_IMPORTED_MODULE_8___default().container),
+                        className: (_product_module_scss__WEBPACK_IMPORTED_MODULE_9___default().container),
                         children: [
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
                                 children: "Cadastrar produto"
                             }),
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
                                 onSubmit: handleProduct,
-                                className: (_product_module_scss__WEBPACK_IMPORTED_MODULE_8___default().form),
+                                className: (_product_module_scss__WEBPACK_IMPORTED_MODULE_9___default().form),
                                 children: [
                                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("label", {
-                                        className: (_product_module_scss__WEBPACK_IMPORTED_MODULE_8___default().labelAvatar),
+                                        className: (_product_module_scss__WEBPACK_IMPORTED_MODULE_9___default().labelAvatar),
                                         children: [
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
                                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_icons_fi__WEBPACK_IMPORTED_MODULE_5__.FiUpload, {
@@ -142,8 +145,8 @@ function Product({ categoryList  }) {
                                                 accept: "image/png, image/jpeg",
                                                 onChange: handleFile
                                             }),
-                                            avatarUrl && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                                className: (_product_module_scss__WEBPACK_IMPORTED_MODULE_8___default().preview),
+                                            avatarUrl && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_8___default()), {
+                                                className: (_product_module_scss__WEBPACK_IMPORTED_MODULE_9___default().preview),
                                                 src: avatarUrl,
                                                 alt: "Foto do produto",
                                                 width: 250,
@@ -177,7 +180,7 @@ function Product({ categoryList  }) {
                                         onChange: (e)=>setDescription(e.target.value)
                                     }),
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                                        className: (_product_module_scss__WEBPACK_IMPORTED_MODULE_8___default().button),
+                                        className: (_product_module_scss__WEBPACK_IMPORTED_MODULE_9___default().button),
                                         type: "submit",
                                         children: "Cadastrar"
                                     })
@@ -229,11 +232,35 @@ module.exports = require("next/dist/shared/lib/head-manager-context.js");
 
 /***/ }),
 
+/***/ 4957:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/head.js");
+
+/***/ }),
+
 /***/ 4014:
 /***/ ((module) => {
 
 "use strict";
 module.exports = require("next/dist/shared/lib/i18n/normalize-locale-path.js");
+
+/***/ }),
+
+/***/ 744:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/image-config-context.js");
+
+/***/ }),
+
+/***/ 5843:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/shared/lib/image-config.js");
 
 /***/ }),
 
@@ -452,7 +479,7 @@ module.exports = import("react-toastify");;
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [952,664,61,637], () => (__webpack_exec__(3939)));
+var __webpack_exports__ = __webpack_require__.X(0, [952,61,297,637], () => (__webpack_exec__(3939)));
 module.exports = __webpack_exports__;
 
 })();

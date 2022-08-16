@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styles from './header.module.scss'
 import { FiLogOut } from 'react-icons/fi'
 import { AuthContext } from '../../contexts/AuthContext'
+import Image from 'next/image'
 
 export function Header() {
     const { signOut } = useContext(AuthContext)
@@ -10,7 +11,7 @@ export function Header() {
         <header className={styles.headerContainer}>
             <div className={styles.headerContent}>
                 <Link href="/dashboard">
-                    <img src='logo.svg' width={190} height={60} />
+                    <Image src='logo.svg' width={190} height={60} alt={'Imagem do logo da pizzaria'} />
                 </Link>
                 <nav className={styles.navContent}>
                     <Link href="/">

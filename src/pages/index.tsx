@@ -35,7 +35,7 @@ export default function Home() {
     }
     await signIn(data)
 
-    setLoading(true)
+    setLoading(false)
   }
 
   return (

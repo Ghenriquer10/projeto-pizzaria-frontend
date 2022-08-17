@@ -1,0 +1,47 @@
+.containerCenter{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--dark-700);
+  }
+  
+  .login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 600px;
+    padding: 1.5rem 1.5rem;
+  
+    h1{
+      margin-bottom: 20px;
+      color: white;
+      font-size: 1.2em;
+    }
+    
+    form{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 90%;
+    }
+    form button{
+      height: 40px;
+      font-size: 1.2rem;
+    }
+  }
+  
+  .register{
+    margin-top: 1rem;
+    color: var(--white);
+    cursor: pointer;
+  }
+  
+  @media (max-width: 620px){
+    .login{
+      width: 90%;
+    }
+  }
